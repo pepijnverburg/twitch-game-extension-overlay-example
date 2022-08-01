@@ -1,0 +1,89 @@
+{
+  "name": "twitch-game-extension-overlay-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "setup": "yarn install",
+    "start": "cross-env HTTPS=true react-scripts start",
+    "start:insecure": "react-scripts start",
+    "start:ci": "yarn build:ci && yarn serve",
+    "serve": "cross-env PORT=3000 serve -s build",
+    "serve:proxy": "ngrok http https://localhost:3000",
+    "build": "rimraf ./build/ && cross-env NODE_ENV=production GENERATE_SOURCEMAP=false react-scripts build",
+    "build:ci": "cross-env REACT_APP_CI=true yarn build",
+    "build:twitch": "yarn build && yarn bundle:twitch && yarn bundle:source",
+    "bundle:twitch": "rimraf ./osrs-live-loadout-twitch-release.zip && cd ./build/ && zip -r ../osrs-live-loadout-twitch-release.zip ./",
+    "bundle:source": "rimraf ./osrs-live-loadout-readable-source.zip && zip -r ./osrs-live-loadout-readable-source.zip ./ --exclude=*node_modules/* --exclude=*.git* --exclude=./docs/* --exclude=./build/*",
+    "build:analyze": "source-map-explorer 'build/static/js/*.js'",
+    "test": "cypress open",
+    "test:unit": "react-scripts test",
+    "lint": "eslint",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "1.6.1",
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "12.0.0",
+    "@testing-library/user-event": "12.8.3",
+    "@types/jest": "26.0.24",
+    "@types/node": "12.20.19",
+    "@types/react": "16.14.13",
+    "@types/react-dom": "16.9.14",
+    "@types/uuid": "8.3.1",
+    "atob": "2.1.2",
+    "axios": "0.21.1",
+    "change-case": "4.1.2",
+    "classnames": "2.3.1",
+    "date-fns": "2.23.0",
+    "jsonwebtoken": "8.5.1",
+    "lodash": "4.17.21",
+    "pako": "1.0.11",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-draggable": "4.4.3",
+    "react-redux": "7.2.4",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "3.4.4",
+    "styled-components": "5.3.0",
+    "typescript": "4.3.5",
+    "uuid": "8.3.2",
+    "winston": "3.3.3"
+  },
+  "devDependencies": {
+    "@types/atob": "2.1.2",
+    "@types/axios": "0.14.0",
+    "@types/change-case": "2.3.1",
+    "@types/classnames": "2.3.0",
+    "@types/clipboard": "2.0.1",
+    "@types/google.analytics": "0.0.42",
+    "@types/jsonwebtoken": "8.5.4",
+    "@types/lodash": "4.14.172",
+    "@types/pako": "1.0.2",
+    "@types/react-custom-scrollbars": "4.0.8",
+    "@types/react-redux": "7.1.18",
+    "@types/react-router-dom": "5.1.8",
+    "@types/styled-components": "5.1.12",
+    "@types/winston": "2.4.4",
+    "cross-env": "7.0.3",
+    "cypress": "5.6.0",
+    "rimraf": "3.0.2",
+    "serve": "11.3.2",
+    "source-map-explorer": "2.5.2",
+    "ts-node": "9.1.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
