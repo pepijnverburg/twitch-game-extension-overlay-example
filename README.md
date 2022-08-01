@@ -2,8 +2,8 @@
 This is a template project for a [Twitch Extension](https://dev.twitch.tv/extensions)
 
 ## Requirements
-- NodeJS v8.0+
-- Yarn v1.1+
+- NodeJS v16.0+
+- Yarn v1.2+
 
 ## Installation
 Setup the repo with:
@@ -21,8 +21,6 @@ Now navigate to the **HTTPS** (required for Twitch Developer Rig) location of th
 ```
 https://localhost:3000/
 ```
-
-This will by default also show a streamer background placeholder.
 
 ## Building for production
 To build for deployment at Twitch:
