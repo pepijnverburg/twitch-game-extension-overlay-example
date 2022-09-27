@@ -65,7 +65,7 @@
     "@types/styled-components": "5.1.12",
     "@types/winston": "2.4.4",
     "cross-env": "7.0.3",
-    "cypress": "5.6.0",
+    "cypress": "10.9.0",
     "rimraf": "3.0.2",
     "serve": "11.3.2",
     "source-map-explorer": "2.5.2",
